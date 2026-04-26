@@ -16,3 +16,25 @@
     </li> 
   </ul> 
 </div> 
+
+<!-- Ajouter dans liste-contacts.component.html --> 
+<p *ngIf="nombreAjouts > 0"> 
+  {{ nombreAjouts }} contact(s) ajouté(s) depuis le chargement 
+</p> 
+<small>Liste chargée à : {{ dateChargement }}</small> 
+
+<!-- liste-contacts.component.html --> 
+<li *ngFor="let c of contacts; let i = index"> 
+  {{ i+1 }}. <strong>{{ c.nom }}</strong> — {{ c.email }} 
+  <button (click)="supprimer(i)">❌</button> 
+</li> 
+
+<!-- liste-contacts.component.html --> 
+<input [(ngModel)]="recherche" placeholder="🔍 Rechercher un contact...">
+ 
+<p>{{ contactsFiltres.length }} résultat(s)</p> 
+ 
+<!-- Utiliser contactsFiltres au lieu de contacts dans *ngFor --> 
+<li *ngFor="let c of contactsFiltres; let i = index"> 
+  ... 
+  </li>

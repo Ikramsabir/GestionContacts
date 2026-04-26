@@ -4,6 +4,16 @@
   (contactSauvegarde)="ajouterContact($event)">
 </app-formulaire-contact>
 
-<app-liste-contacts
-  [contacts]="mesContacts">
-</app-liste-contacts>
+
+
+<!-- app.component.html --> 
+<app-liste-contacts 
+  [contacts]="mesContacts" 
+  (contactSupprime)="supprimerContact($event)"> 
+</app-liste-contacts> 
+
+<!-- app.component.html --> 
+<header> 
+  <h1>🔍 Gestionnaire de Contacts</h1> 
+  <span>{{ messageStatut }}</span> 
+</header>
