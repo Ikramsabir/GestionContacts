@@ -1,0 +1,105 @@
+<!-- formulaire-contact.html 
+<div> 
+  <h2>{{ titre }}</h2> 
+  <p>Version : {{ version }}</p> 
+  <p>Bonjour depuis le composant formulaire-contact!</p> 
+</div> --> 
+
+<!---exe 1 Partrie A -->
+<section>
+    <p>Bonjour {{prenom}}</p>
+
+    <p>Note sur 20 : {{note}}</p>
+
+    <p>Prenom en majiscule : {{prenom.toUpperCase()}}</p>
+
+    <p>Reussite : {{note>=10?"Admis":"refuse"}}</p>
+
+    <p>Nombres de notes : {{notes.length}}</p>
+
+    <p>Date : {{dateAujourdhui}}</p>
+</section>
+
+
+<!-- exe 1 Partie B-->
+
+
+<section>
+    <h3>Property Binding</h3>
+
+    <img [src]="imageUrl" [alt]="'Photo de '+prenom" width="200">
+
+
+    <button [disabled]="!boutonActif" >Bouton a controle</button>
+
+    <p [style.fontSize.px]="tailleText">Ce text a une taille dynamique de {{tailleText}}px</p>
+
+
+    <div [className]="classeCSS">
+        Bloc avec class css dynamique : {{classeCSS}}
+    </div>
+</section>
+
+
+<!-- exe 1 Partrie C-->
+
+
+<section>
+    <h3>Event Binding</h3>
+
+    <button (click)="decrementer()">-</button>
+    <span>{{compteur}}</span>
+    <button (click)="incrementer()">+</button>
+    <button (click)="reinitialiser()">Reset</button>
+
+    <br><br>
+
+    <button (click)="changerCouleur('rouge')">Rouge</button>
+    <button (click)="changerCouleur('bleu')">Bleu</button>
+    <button (click)="changerCouleur('vert')">Vert</button>
+    <p>Couleur Choisi : {{couleurBouton}}</p>
+
+    <input (keyup)="onFrappe($event)" placeholder="Tapez quelue chose ....">
+    <p>Vous ecrivez : {{textInput}}</p>
+</section>
+
+
+<section>
+    <h3>Two-Way Binding - Apercu en temps reel</h3>
+    <input [(ngModel)]="nom" placeholder="Nom Complets">
+   <input [(ngModel)]="email" placeholder="adresse email" type="email">
+   <input [(ngModel)]="telephone" placeholder="Telephone">
+   <input type="number" [(ngModel)]="age" placeholder="Age">
+
+   <div>
+    <h4>Apercu : </h4>
+    <p><strong>{{nom}}</strong></p>
+    <p>{{email}} | {{telephone}}</p>
+    <p>Age : {{age}} ans</p>
+
+
+    <p *ngIf="nom.length > 0">
+        Bonjour {{nom}} , votre saisie est cours ! 
+    </p>
+   </div>
+</section>
+
+
+<!--exe 3 p B formulaire-contact.component.html --> 
+<div> 
+  <h2>Ajouter un Contact</h2> 
+ 
+  <input [(ngModel)]="nom" placeholder="Nom complet *"> 
+  <input [(ngModel)]="email" type="email" placeholder="Email *"> 
+  <input [(ngModel)]="telephone" placeholder="Téléphone"> 
+ 
+  <!-- Aperçu conditionnel --> 
+  <div *ngIf="nom"> 
+    <strong>Aperçu :</strong> {{ nom }} — {{ email }} 
+  </div> 
+ 
+  <!-- Bouton déclenche sauvegarder() --> 
+  <button (click)="sauvegarder()"> 
+    ➕ Ajouter le contact 
+  </button> 
+</div>
